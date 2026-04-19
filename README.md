@@ -23,12 +23,6 @@
 
 ---
 
-## 🏗️ What I'm building
-
-### [`highway-monitor`](https://github.com/mcaney006/caneyjrs_-highway_monitor) · *active*
-
-Freight identity, fraud defense, and carrier intelligence platform. Continuous carrier verification, real-time threat signals, SCIM-native access, zero-trust request gating.
-
 **Stack:** Rails 7.2 · Ruby 3.3 · PostgreSQL + TimescaleDB · Sidekiq Pro · Redis · OpenSearch · S3 · OpenTelemetry · Yabeda/Prometheus · Okta SCIM 2.0
 
 ```
@@ -44,7 +38,7 @@ Freight identity, fraud defense, and carrier intelligence platform. Continuous c
 
 **Threat intelligence & OSINT** — I run investigation cases through a personal
 platform called **NEXUS** covering phishing kit takedowns, fraud rings, and
-identity-laundering schemes. Currently tracking five active cases including a
+identity-laundering schemes. Currently tracking five active cases, including a
 Russian AiTM phishing kit targeting freight broker onboarding.
 
 **Secure-by-default engineering** — every repo I maintain runs:
