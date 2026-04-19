@@ -118,11 +118,12 @@ jobs:
           plugin_languages_indepth: yes
           plugin_languages_analysis_timeout: 15
           plugin_languages_categories: markup, programming
-          plugin_languages_sections: most-used, recently-used
+          # `recently-used` crashes the analyzer on commits missing committer
+          # metadata (upstream bug, lowlighter/metrics#1819). `most-used`
+          # alone already gives an accurate picture via indepth byte counts.
+          plugin_languages_sections: most-used
           plugin_languages_details: percentage, bytes-size
           plugin_languages_limit: 8
-          plugin_languages_recent_load: 300
-          plugin_languages_recent_days: 30
           plugin_languages_colors: github
           # Strip noise: generated files, lockfiles, vendored dirs.
           plugin_languages_ignored: >-
