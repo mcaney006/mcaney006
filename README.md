@@ -17,6 +17,12 @@ I pretend to build systems that still work after your “revolutionary startup�
 
 📍 Dallas, Texas
 
+<p>
+  <a href="https://github.com/mcaney006" aria-label="Follow mcaney006 on GitHub"><img alt="Follow @mcaney006 on GitHub" src="https://img.shields.io/github/followers/mcaney006?label=Follow%20%40mcaney006&style=for-the-badge&logo=github&logoColor=white&labelColor=0d1117&color=0d1117" /></a>
+  <a href="https://github.com/features/copilot" aria-label="GitHub Copilot product page"><img alt="GitHub Copilot" src="https://img.shields.io/badge/GitHub%20Copilot-in%20the%20loop-0d1117?style=for-the-badge&logo=githubcopilot&logoColor=white&labelColor=0d1117" /></a>
+  <a href="https://github.com/mcaney006/mcaney006/actions/workflows/metrics.yml" aria-label="Metrics workflow status"><img alt="metrics workflow" src="https://img.shields.io/github/actions/workflow/status/mcaney006/mcaney006/metrics.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=metrics&labelColor=0d1117&color=0d1117" /></a>
+</p>
+
 ---
 
 ### whoami
@@ -88,6 +94,7 @@ me = {
 - **OpenTelemetry** — added once, never configured  
 - **AWS + Terraform** — handcrafted snowflakes in every environment  
 - **GitHub Actions** — fails occasionally, builds character
+- **GitHub Copilot** — writes code I pretend to have written, with a confidence level I admire
 
 ---
 
@@ -139,6 +146,9 @@ Tools, not identity.
 
 ### live dashboard
 
+<a href="./.github/workflows/metrics.yml"><img alt="GitHub Actions" src="https://img.shields.io/badge/runs%20on-GitHub%20Actions-0d1117?style=flat-square&logo=githubactions&logoColor=white" /></a>
+<a href="https://github.com/lowlighter/metrics"><img alt="lowlighter/metrics" src="https://img.shields.io/badge/lowlighter%2Fmetrics-v3.34-0d1117?style=flat-square&logo=github&logoColor=white" /></a>
+
 Self-hosted via [`lowlighter/metrics`](https://github.com/lowlighter/metrics)
 running on GitHub Actions every 6 hours. No third-party services, no
 rate-limit surprises. See [`metrics/`](./metrics) for setup.
@@ -176,4 +186,13 @@ rate-limit surprises. See [`metrics/`](./metrics) for setup.
   <img alt="signal" src="./metrics/signal.svg" />
 </a>
 
+</div>
+
+---
+
+<div align="center">
+  <a href="https://github.com/mcaney006">
+    <img alt="mcaney006 on GitHub" src="https://img.shields.io/badge/%40mcaney006-0d1117?style=flat-square&logo=github&logoColor=white&labelColor=0d1117" />
+  </a>
+  <sub>&nbsp;·&nbsp;built and hosted on GitHub</sub>
 </div>
