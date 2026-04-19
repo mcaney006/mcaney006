@@ -95,6 +95,10 @@ jobs:
           # tail-chasing loop.
           committer_message: "chore(metrics): refresh activity card [skip ci]"
           committer_branch: main
+          # Pin attribution so auto-commits land as me, not github-actions[bot].
+          # Otherwise the contributors graph grows a bot entry every 6h.
+          committer_name: "Michael Caney Jr"
+          committer_email: "michael.jr@gohighway.com"
 
   # ───────────────────────────────────────────────────────────────────────────
   # LANGUAGES — what I write in, weighted by real commits
@@ -142,6 +146,8 @@ jobs:
           retries_delay: 300
           committer_message: "chore(metrics): refresh languages card [skip ci]"
           committer_branch: main
+          committer_name: "Michael Caney Jr"
+          committer_email: "michael.jr@gohighway.com"
 
   # ───────────────────────────────────────────────────────────────────────────
   # SIGNAL — achievements, impact, and accumulated work
@@ -196,6 +202,8 @@ jobs:
           retries_delay: 300
           committer_message: "chore(metrics): refresh signal card [skip ci]"
           committer_branch: main
+          committer_name: "Michael Caney Jr"
+          committer_email: "michael.jr@gohighway.com"
 
   # ───────────────────────────────────────────────────────────────────────────
   # ISOCALENDAR — full-year contribution heatmap, isometric
@@ -221,6 +229,8 @@ jobs:
           retries_delay: 300
           committer_message: "chore(metrics): refresh isocalendar [skip ci]"
           committer_branch: main
+          committer_name: "Michael Caney Jr"
+          committer_email: "michael.jr@gohighway.com"
 
   # ───────────────────────────────────────────────────────────────────────────
   # Optional cards — uncomment when you've added the matching secret.
