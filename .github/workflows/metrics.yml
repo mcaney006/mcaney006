@@ -1,0 +1,263 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Self-hosted GitHub profile metrics via lowlighter/metrics.
+#
+# Produces four SVG cards under metrics/ which are referenced from README.md:
+#
+#   metrics/activity.svg     — recent events, follow-ups, reactions
+#   metrics/languages.svg    — language breakdown + topics (starred)
+#   metrics/signal.svg       — achievements, stars, lines, gists, discussions
+#   metrics/isocalendar.svg  — full-year contribution isometric calendar
+#
+# Why split into four jobs? If one plugin hits a transient GitHub API hiccup,
+# the other three cards still refresh. A single monolithic job would fail all
+# four on any single plugin error.
+#
+# SECURITY NOTE: this workflow has no `run:` steps and does not interpolate
+# any `github.event.*` context into shell — all inputs to lowlighter/metrics
+# are either static strings or the METRICS_TOKEN secret. No injection surface.
+#
+# Required secret: METRICS_TOKEN — classic PAT with scopes (public_repo,
+# read:user). See metrics/README.md for setup.
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: metrics
+
+on:
+  # Cron: every 6 hours (4 refreshes/day × 4 cards = ~16 commits/day max).
+  # Hourly would bloat the log without producing meaningfully fresher data.
+  schedule:
+    - cron: "0 */6 * * *"
+
+  # Manual trigger for first-run and forced refresh.
+  workflow_dispatch:
+
+  # Regenerate immediately when the workflow itself changes.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/metrics.yml"
+
+# Single concurrency group — if a new run starts while the previous is mid-
+# flight, cancel the older one. Prevents commit races on metrics/*.svg.
+concurrency:
+  group: metrics-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  # ───────────────────────────────────────────────────────────────────────────
+  # ACTIVITY — what I've been doing lately
+  # ───────────────────────────────────────────────────────────────────────────
+  activity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate activity card
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: mcaney006
+          filename: metrics/activity.svg
+          template: classic
+          base: "activity, community"
+          config_timezone: America/Chicago
+          config_display: regular
+          config_order: base, activity, followup, reactions
+          base_indepth: yes
+
+          # Recent activity stream.
+          plugin_activity: yes
+          plugin_activity_limit: 5
+          plugin_activity_days: 14
+          plugin_activity_load: 300
+          plugin_activity_filter: issue, pr, release, fork, review, ref/create
+          plugin_activity_visibility: all
+
+          # Follow-up: open vs. closed issues/PRs I've authored.
+          plugin_followup: yes
+          plugin_followup_sections: repositories, user
+          plugin_followup_indepth: yes
+
+          # Reactions I've given across issues/PRs.
+          plugin_reactions: yes
+          plugin_reactions_limit: 200
+          plugin_reactions_days: 30
+          plugin_reactions_display: absolute
+
+          repositories_affiliations: owner, collaborator
+
+          # Retry-safe: let lowlighter's built-in retry handle transient 5xx.
+          retries: 3
+          retries_delay: 300
+
+          # [skip ci] so metrics commits don't trigger other workflows in a
+          # tail-chasing loop.
+          committer_message: "chore(metrics): refresh activity card [skip ci]"
+          committer_branch: main
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # LANGUAGES — what I write in, weighted by real commits
+  # ───────────────────────────────────────────────────────────────────────────
+  languages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate languages card
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: mcaney006
+          filename: metrics/languages.svg
+          template: classic
+          base: ""
+          config_timezone: America/Chicago
+
+          # indepth = analyzes actual commit bytes, not repo-level stats.
+          # Much truer to what I actually write.
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_categories: markup, programming
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_details: percentage, bytes-size
+          plugin_languages_limit: 8
+          plugin_languages_recent_load: 300
+          plugin_languages_recent_days: 30
+          plugin_languages_colors: github
+          # Strip noise: generated files, lockfiles, vendored dirs.
+          plugin_languages_ignored: >-
+            html, css, tex, less, dockerfile, makefile, roff, batchfile,
+            cmake, mustache, shell, procfile, jupyter notebook
+
+          # Topics from starred repos — signals interests without leaking
+          # private-repo content.
+          plugin_topics: yes
+          plugin_topics_mode: starred
+          plugin_topics_sort: stars
+          plugin_topics_limit: 15
+
+          repositories_affiliations: owner, collaborator
+          retries: 3
+          retries_delay: 300
+          committer_message: "chore(metrics): refresh languages card [skip ci]"
+          committer_branch: main
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # SIGNAL — achievements, impact, and accumulated work
+  # ───────────────────────────────────────────────────────────────────────────
+  signal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate signal card
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: mcaney006
+          filename: metrics/signal.svg
+          template: classic
+          base: repositories
+          config_timezone: America/Chicago
+
+          # Achievements — curated, threshold B skips noise-tier filler.
+          plugin_achievements: yes
+          plugin_achievements_threshold: B
+          plugin_achievements_secrets: yes
+          plugin_achievements_display: detailed
+          plugin_achievements_limit: 0
+          plugin_achievements_ignored: >-
+            octonaut, infographile, deep-diver, member
+
+          # Total lines added/removed across all my commits.
+          plugin_lines: yes
+          plugin_lines_sections: base
+          plugin_lines_repositories_limit: 100
+
+          # Gist count + top-ranked.
+          plugin_gists: yes
+
+          # Discussions I've participated in (answered counts heavily).
+          plugin_discussions: yes
+          plugin_discussions_categories: yes
+          plugin_discussions_categories_limit: 4
+
+          # Stargazers trend across my public repos.
+          plugin_stargazers: yes
+          plugin_stargazers_days: 90
+          plugin_stargazers_charts: yes
+          plugin_stargazers_charts_type: classic
+
+          # Global stars-received ranking (worldwide percentile).
+          plugin_stars: yes
+          plugin_stars_limit: 4
+
+          repositories_affiliations: owner, collaborator
+          retries: 3
+          retries_delay: 300
+          committer_message: "chore(metrics): refresh signal card [skip ci]"
+          committer_branch: main
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # ISOCALENDAR — full-year contribution heatmap, isometric
+  # ───────────────────────────────────────────────────────────────────────────
+  isocalendar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate isocalendar card
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: mcaney006
+          filename: metrics/isocalendar.svg
+          template: classic
+          base: ""
+          config_timezone: America/Chicago
+
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+          repositories_affiliations: owner, collaborator
+          retries: 3
+          retries_delay: 300
+          committer_message: "chore(metrics): refresh isocalendar [skip ci]"
+          committer_branch: main
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # Optional cards — uncomment when you've added the matching secret.
+  # ───────────────────────────────────────────────────────────────────────────
+  #
+  # spotify:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: lowlighter/metrics@v3.34
+  #       with:
+  #         token: NOT_NEEDED
+  #         filename: metrics/spotify.svg
+  #         base: ""
+  #         plugin_music: yes
+  #         plugin_music_provider: spotify
+  #         plugin_music_mode: recent
+  #         plugin_music_token: ${{ secrets.SPOTIFY_TOKEN }}
+  #         plugin_music_limit: 4
+  #
+  # wakatime:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: lowlighter/metrics@v3.34
+  #       with:
+  #         token: NOT_NEEDED
+  #         filename: metrics/wakatime.svg
+  #         base: ""
+  #         plugin_wakatime: yes
+  #         plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
+  #         plugin_wakatime_sections: time, projects, languages, editors, os
+  #         plugin_wakatime_days: 7
+  #
+  # traffic:   # requires PAT with `repo` scope (not just public_repo)
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: lowlighter/metrics@v3.34
+  #       with:
+  #         token: ${{ secrets.METRICS_TOKEN_WITH_REPO }}
+  #         filename: metrics/traffic.svg
+  #         base: ""
+  #         plugin_traffic: yes

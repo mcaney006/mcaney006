@@ -132,17 +132,43 @@ Tools, not identity.
 
 ---
 
+### live dashboard
+
+Self-hosted via [`lowlighter/metrics`](https://github.com/lowlighter/metrics)
+running on GitHub Actions every 6 hours. No third-party services, no
+rate-limit surprises. See [`metrics/`](./metrics) for setup.
+
 <div align="center">
 
-<img alt="stats" src="https://github-readme-stats.vercel.app/api?username=mcaney006&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github" />
-<img alt="langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mcaney006&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&count_private=true" />
+<a href="./metrics/isocalendar.svg">
+  <img alt="year in contributions" src="./metrics/isocalendar.svg" />
+</a>
 
-<br/>
+</div>
 
-<img alt="streak" src="https://streak-stats.demolab.com/?user=mcaney006&theme=tokyonight&hide_border=true" />
+<table>
+<tr>
+<td width="50%" valign="top">
 
-<br/>
+<a href="./metrics/activity.svg">
+  <img alt="activity" src="./metrics/activity.svg" />
+</a>
 
-<img alt="contribution graph" src="https://github-readme-activity-graph.vercel.app/graph?username=mcaney006&theme=tokyo-night&hide_border=true&area=true&custom_title=contribution%20graph&bg_color=1a1b27&color=a9b1d6&line=70a5fd&point=bf91f3" />
+</td>
+<td width="50%" valign="top">
+
+<a href="./metrics/languages.svg">
+  <img alt="languages" src="./metrics/languages.svg" />
+</a>
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+<a href="./metrics/signal.svg">
+  <img alt="signal" src="./metrics/signal.svg" />
+</a>
 
 </div>
