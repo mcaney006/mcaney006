@@ -1,0 +1,23 @@
+README.md
+  d56434db39a4d161 20-25,97,149-151,190-198
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.0",
+  "base_commit_sha": "b19cc8b9b77ecd40766e26a4139fdf6a12d9c893",
+  "prompts": {
+    "d56434db39a4d161": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "14018c5f-961a-48a0-966b-a34f13949eed",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Michael Caney Jr",
+      "messages": [],
+      "total_additions": 252,
+      "total_deletions": 35,
+      "accepted_lines": 217,
+      "overriden_lines": 0
+    }
+  }
+}
