@@ -10,7 +10,10 @@
 
 `mcaney006`
 
-Backend engineer working on distributed systems, reliability, and the parts of software people only notice when they break.
+recovering from exposure to b2b saas “ai-powered” pitch decks and medium articles about “10x engineers who just learned docker yesterday.”
+
+I pretend to build systems that still work after your “revolutionary startup” runs out of runway.
+
 
 📍 Dallas, Texas
 
@@ -34,64 +37,67 @@ me = {
 
 ### what I actually do
 
-- Build backend systems that don't collapse under real traffic
-- Design APIs with clear failure modes instead of "hope it works"
-- Think in terms of **latency, throughput, and failure domains**, not just features
-- Spend more time on **debuggability** than "clean abstractions"
-- Treat production like a hostile environment, because it is
+- Build backend systems that look incredible in demos and then immediately file for emotional distress in production  
+- Design APIs that technically exist and spiritually succeed  
+- Think in terms of **engagement, synergy, and founder aura**, not boring things like latency  
+- Spend most of my time perfecting gradient pitch decks and naming features “AI Copilot.”  
+- Treat production like a suggestion and investors like observability  
 
 ---
 
 ### principles
 
-- **Correctness > cleverness**
-  The most dangerous engineer is the one trying to be impressive. I optimize for things that still work when nobody's watching.
+- **Cleverness > correctness**  
+  If it works, I probably overcomplicated it. If it doesn’t, it’s a scaling issue.
 
-- **Fail loud, not silent**
-  Hidden failures are how you wake up to corrupted data and a bad week.
+- **Fail silent, pivot louder**  
+  If nobody notices the failure, did it even happen? Exactly.
 
-- **Every RPC has a budget**
-  Deadlines, retries, circuit breakers. If you don't define the contract, the network will.
+- **Every RPC is a leap of faith**  
+  Timeouts are negative thinking. We manifest successful responses.
 
-- **Idempotency is not optional**
-  If your system can't handle retries, it's already broken.
+- **Idempotency is optional (confidence is not)**  
+  If retries duplicate data, that’s just… growth.
 
-- **Backpressure over burnout**
-  Systems that can't slow down will eventually fall over.
+- **Burnout over backpressure**  
+  Systems don’t need limits. Engineers do.
 
-- **Observability is a feature**
-  Logs, metrics, traces. If on-call is guessing, the system is unfinished.
+- **Observability is a mindset**  
+  Logs are vibes. Metrics are feelings. Traces are for people who don’t believe in themselves.
 
-- **Read the source**
-  Documentation lies. Code usually doesn't.
+- **Read the docs**  
+  Not the source. The docs. The glossy ones with emojis.
 
 ---
 
 ### systems thinking
 
-- Prefer **simple, well-understood architectures** over trendy complexity
-- Understand tradeoffs between **consistency vs availability**, not just pretend both exist
-- Design for **partial failure**, not happy paths
-- Assume dependencies will degrade, timeout, or lie
-- Model systems as **data flow + failure handling**, not just endpoints
+- Prefer **complex systems nobody understands** over simple ones anyone can fix  
+- Consistency and availability both exist if you simply believe hard enough  
+- Design for **perfect conditions only**, because optimism is a core value  
+- Assume dependencies are stable, fast, and emotionally supportive  
+- Model systems as **“we’ll just add AI later”**
 
 ---
 
 ### current stack
 
-- **Ruby / Rails** for shipping fast and maintaining sanity in production
-- **Go** where performance, concurrency, and operational simplicity matter
-- **Postgres + Redis** as core primitives, not afterthoughts
-- **OpenTelemetry** for tracing real behavior, not guessing
-- **AWS + Terraform** for infra that can be reproduced, not "it works on my account"
-- **GitHub Actions** for pipelines that don't require human babysitting
+- **Ruby / Rails** — for rapidly scaffolding ideas, we will abandon  
+- **Go** — mentioned in meetings for credibility  
+- **Postgres + Redis** — installed, rarely consulted  
+- **OpenTelemetry** — added once, never configured  
+- **AWS + Terraform** — handcrafted snowflakes in every environment  
+- **GitHub Actions** — fails occasionally, builds character
 
 ---
 
 ### on Python
 
-I use it when it's the fastest way to move data, prototype, or test ideas.
-I don't build systems around it unless there's a very good reason.
+I use it for everything.
+
+And by everything, I mean importing libraries I don’t understand.
+
+If it works, I’m a genius. If it breaks, it’s Python’s fault.
 
 Tools, not identity.
 
@@ -99,31 +105,30 @@ Tools, not identity.
 
 ### currently
 
-- Shipping Ruby in production environments that actually matter
-- Moving critical paths to Go where latency and control become bottlenecks
-- Spending time on distributed systems fundamentals instead of chasing frameworks
-- Breaking things in controlled environments so they don't break in production
+- Shipping features directly to production to maximize learning velocity (and incident count)  
+- Rewriting core systems quarterly for spiritual growth  
+- Following 47 “top engineers” on Twitter and internalizing none of it  
+- Breaking things unintentionally and calling it chaos engineering
 
 ---
 
-### interests (not the cringe kind)
+### interests
 
-- Distributed systems failure modes
-- Event-driven architectures that don't turn into spaghetti
-- Observability that tells the truth
-- Data pipelines that don't silently rot
-- Security + adversarial thinking in real systems
+- Distributed systems (have not distributed anything yet)  
+- Event-driven architectures (events include “app crashed”)  
+- Observability dashboards (color-coded for morale)  
+- Data pipelines (they move data… somewhere)  
+- Security (we use HTTPS)  
 
 ---
 
 ### anti-patterns I avoid
 
-- Over-engineering before traffic exists
-- Silent retries that hide real issues
-- "Magic" abstractions nobody understands
-- Systems that only work under ideal conditions
-- Chasing tools instead of solving problems
-
+- Over-engineering before traffic exists  
+- Silent retries that quietly corrupt everything  
+- Magic abstractions nobody understands, including me  
+- Systems that only work in demos  
+- Chasing tools instead of outcomes
 ---
 
 ### contact
