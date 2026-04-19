@@ -47,7 +47,7 @@ writing a lot of Ruby in prod · Python for data plumbing and security research 
 
 <br/>
 
-<img alt="trophies" src="https://github-profile-trophy.vercel.app/?username=mcaney006&theme=tokyonight&no-frame=true&no-bg=true&margin-w=6&column=7" />
+<img alt="contribution graph" src="https://github-readme-activity-graph.vercel.app/graph?username=mcaney006&theme=tokyo-night&hide_border=true&area=true&custom_title=contribution%20graph&bg_color=1a1b27&color=a9b1d6&line=70a5fd&point=bf91f3" />
 
 </div>
 
