@@ -24,10 +24,10 @@
                     <rect mask="url(#languages-bar)" x="0" y="0" width="0" height="8" fill="#d1d5da"/>
                     <rect mask="url(#languages-bar)" x="0" y="0" width="261.5916812519304" height="8" fill="#dea584"/>
                     <rect mask="url(#languages-bar)" x="261.5916812519304" y="0" width="73.21424894471328" height="8" fill="#ff3e00"/>
-                    <rect mask="url(#languages-bar)" x="334.8059301966437" y="0" width="58.37022547101822" height="8" fill="#ededed"/>
+                    <rect mask="url(#languages-bar)" x="334.8059301966437" y="0" width="58.37022547101822" height="8" fill="#3178c6"/>
                     <rect mask="url(#languages-bar)" x="393.17615566766193" y="0" width="48.706887676310096" height="8" fill="#3178c6"/>
                     <rect mask="url(#languages-bar)" x="441.883043343972" y="0" width="9.445073612684032" height="8" fill="#336790"/>
-                    <rect mask="url(#languages-bar)" x="451.32811695665606" y="0" width="5.326881499021929" height="8" fill="#ededed"/>
+                    <rect mask="url(#languages-bar)" x="451.32811695665606" y="0" width="5.326881499021929" height="8" fill="#384d54"/>
                     <rect mask="url(#languages-bar)" x="456.654998455678" y="0" width="2.9064140842170287" height="8" fill="#844FBA"/>
                     <rect mask="url(#languages-bar)" x="459.56141253989506" y="0" width="0.43858746010501387" height="8" fill="#f1e05a"/>
                 </svg>
@@ -48,7 +48,7 @@
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#ededed" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#3178c6" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
                                 TSX
                             </div>
@@ -110,7 +110,7 @@
                         <div class="field language details">
                             <div class="field">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
-                                    <path fill="#ededed" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
+                                    <path fill="#384d54" fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"/>
                                 </svg>
                                 Just
                             </div>
