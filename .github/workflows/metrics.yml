@@ -174,11 +174,6 @@ jobs:
           plugin_achievements_ignored: >-
             octonaut, infographile, deep-diver, member
 
-          # Total lines added/removed across all my commits.
-          plugin_lines: yes
-          plugin_lines_sections: base
-          plugin_lines_repositories_limit: 100
-
           # Gist count + top-ranked.
           plugin_gists: yes
 
