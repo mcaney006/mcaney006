@@ -138,12 +138,6 @@ Tools, not identity.
 - Chasing tools instead of outcomes
 ---
 
-### contact
-
-[michaelcaney750@gmail.com](mailto:michaelcaney750@gmail.com)
-
----
-
 ### live dashboard
 
 <a href="./.github/workflows/metrics.yml"><img alt="GitHub Actions" src="https://img.shields.io/badge/runs%20on-GitHub%20Actions-0d1117?style=flat-square&logo=githubactions&logoColor=white" /></a>
